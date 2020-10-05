@@ -1,0 +1,46 @@
+public class Solution {
+
+  public static void main(String[] args) {
+  
+	int[] array = {5, 1, 35, 0 ,2, 4, 9};
+  
+	SelectionSort(array);
+	
+	for (int i : array){
+  
+        System.out.println(i);
+    }
+	
+    }
+    
+    public static int[] SelectionSort(int[] array){
+
+        for (int i = 0; i < array.length - 1; i++) {
+        
+            int index = i; //
+            
+            for (int j = i+1; j < array.length; j++) {
+            
+                if (array[j] < array[index]){
+                
+                    index = j; // checking the min value
+                    
+                }
+
+            }
+            
+            //putting the smallest number to it's place in the beginning
+            
+            int smallNum = array[index];
+            
+            array[index] = array[i];
+            
+            array[i] = smallNum;
+        }
+
+        return array;
+    }
+    
+    //O(n^2)
+    
+}
