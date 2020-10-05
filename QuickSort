@@ -1,0 +1,49 @@
+import static it.unimi.dsi.fastutil.ints.IntArrays.swap;
+
+public class Solution {
+    public static void main(String[] args){
+
+        int [] a = {5, 1, 3, 7, 6, 42, 45, 0, 2, 10, 15, 13, 12, 11, 4};
+        int low = 0;
+        int high = a.length - 1;
+
+        quicksort(a, low, high);
+
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i]);
+        }
+
+    }
+
+    public static void quicksort(int[] a, int low, int high){
+        if (a.length == 0){
+            return;
+        }
+        if (low >= high){
+            return;
+        }
+        int pivot = a[low + (high - low)/2];
+
+        int index = partition(a, low, high, pivot); //returning a dividing point between the low and the high
+        quicksort(a, low, index-1);
+        quicksort(a, index, high);
+
+    }
+    
+    public static int partition( int[] a, int low, int high, int pivot){
+        while (low <= high){
+            while (a[low] < pivot){
+                low++;
+            }
+            while (a[high] > pivot){
+                high --;
+            }
+            if (low <= high) {
+                swap(a, low, high);
+                low++;
+                high--;
+            }
+        }
+        return low;
+    }
+}
